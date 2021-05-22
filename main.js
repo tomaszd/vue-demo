@@ -6,19 +6,23 @@ var app = new Vue({
     data: {
         product: 'Socks',
         description: 'very important',
-        image: './assets/green_socks.jpg',
+        selectedVariant: 0,
         inventory: 8,
         cart: 0,
+        inStock: 10,
+        brand: "Super quality",
 
         variants: [
             {
-                variantId: 1,
+                variantId: 12,
                 variantColor: 'green',
                 variantImage: './assets/green_socks.jpg',
+                variantQuantity: 20,
             }, {
-                variantId: 2,
+                variantId: 22,
                 variantColor: 'blue',
                 variantImage: './assets/blue_socks.jpg',
+                variantQuantity: 10,
             },
 
         ]
@@ -30,8 +34,17 @@ var app = new Vue({
         removeFromCart: function () {
             this.cart -= 1
         },
-        updateProduct: function (variantImage) {
-            this.image = variantImage
+        updateProduct: function (index) {
+            this.selectedVariant = index;
+        }
+    },
+    computed: {
+        title: function () {
+            return this.brand + ' ' + this.product
+
+        },
+        image: function () {
+            return this.variants[this.selectedVariant].variantImage
         }
     }
 })
