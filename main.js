@@ -9,7 +9,6 @@ var app = new Vue({
         selectedVariant: 0,
         inventory: 8,
         cart: 0,
-        inStock: 10,
         brand: "Super quality",
 
         variants: [
@@ -22,7 +21,7 @@ var app = new Vue({
                 variantId: 22,
                 variantColor: 'blue',
                 variantImage: './assets/blue_socks.jpg',
-                variantQuantity: 10,
+                variantQuantity: 0,
             },
 
         ]
@@ -45,6 +44,10 @@ var app = new Vue({
         },
         image: function () {
             return this.variants[this.selectedVariant].variantImage
+        },
+        inStock: function () {
+            return this.variants[this.selectedVariant].variantQuantity
+
         }
     }
 })
