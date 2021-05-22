@@ -7,6 +7,28 @@ var app = new Vue({
         product: 'Socks',
         description: 'very important',
         image: './assets/green_socks.jpg',
-        inventory: 8
+        inventory: 8,
+        cart: 0,
+
+        variants: [
+            {
+                variantId: 1,
+                variantColor: 'green',
+                variantImage: './assets/green_socks.jpg',
+            }, {
+                variantId: 2,
+                variantColor: 'blue',
+                variantImage: './assets/blue_socks.jpg',
+            },
+
+        ]
+    },
+    methods: {
+        addToCart: function () {
+            this.cart += 1
+        },
+        updateProduct: function (variantImage) {
+            this.image = variantImage
+        }
     }
 })
